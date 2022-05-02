@@ -10,6 +10,17 @@ public class Ingredient implements Serializable {
     private Double unitPrice;
     private Integer unit;
 
+    public Ingredient() {
+	super();
+    }
+
+    public Ingredient(String name, Double unitPrice, Integer unit) {
+	super();
+	this.name = name;
+	this.unitPrice = unitPrice;
+	this.unit = unit;
+    }
+
     public String getName() {
 	return name;
     }

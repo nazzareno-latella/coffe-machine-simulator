@@ -10,6 +10,16 @@ public class Beverage implements Serializable {
     private String name;
     private List<Ingredient> ingredients;
 
+    public Beverage() {
+	super();
+    }
+
+    public Beverage(String name, List<Ingredient> ingredients) {
+	super();
+	this.name = name;
+	this.ingredients = ingredients;
+    }
+
     public List<Ingredient> getIngredients() {
 	return ingredients;
     }
