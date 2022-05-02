@@ -3,13 +3,13 @@ package org.example;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.text.DecimalFormat;
-import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import org.example.bean.Beverage;
+import org.example.bean.Ingredient;
+import org.example.model.impl.CoffeeMachineSimulatorImpl;
 
 public class Main {
     public static void main(String[] args) {
@@ -43,18 +43,9 @@ public class Main {
 
     }
 
-    private static String calculatePrice(Beverage b) {
-	DecimalFormat df = new DecimalFormat("0.00", DecimalFormatSymbols.getInstance(Locale.ENGLISH));
-
-	Double price = 0.0;
-	for (Iterator<Ingredient> iterator = b.getIngredients().iterator(); iterator.hasNext();) {
-	    Ingredient i = iterator.next();
-	    price += (i.getUnit() * i.getUnitPrice());
-	}
-	return df.format(price);
-    }
-
     private static String getFinalPrice(String beverage, Integer sugarUnits) {
+	CoffeeMachineSimulatorImpl coffeeMachineSimulator = new CoffeeMachineSimulatorImpl();
+
 	Beverage b = null;
 	if ("espresso".equals(beverage)) {
 	    b = new Beverage();
@@ -73,6 +64,6 @@ public class Main {
 	    sugar.setUnitPrice(0.01);
 	    b.getIngredients().add(sugar);
 	}
-	return calculatePrice(b);
+	return coffeeMachineSimulator.getPrice(b);
     }
 }

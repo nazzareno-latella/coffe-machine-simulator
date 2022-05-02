@@ -1,8 +1,11 @@
-package org.example;
+package org.example.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Beverage {
+public class Beverage implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     private String name;
     private List<Ingredient> ingredients;
