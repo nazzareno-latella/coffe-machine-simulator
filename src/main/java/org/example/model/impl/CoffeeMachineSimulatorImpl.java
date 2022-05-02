@@ -22,16 +22,9 @@ public class CoffeeMachineSimulatorImpl extends AbstractCoffeeMachineSimulator {
     private static final String INGREDIENT_COCOA = "cocoa";
     private static final String INGREDIENT_WHIPPED_CREAM = "whipped cream";
 
-    private List<Beverage> beverages;
-
     public CoffeeMachineSimulatorImpl() {
 	super();
 	setupBeverages();
-    }
-
-    @Override
-    public String getPrice(String beverageName, Integer sugarUnits) {
-	return getPrice(getBeverage(beverageName), sugarUnits);
     }
 
     private void addCappuccino() {
@@ -77,10 +70,6 @@ public class CoffeeMachineSimulatorImpl extends AbstractCoffeeMachineSimulator {
 	ingredients.add(new Ingredient(INGREDIENT_MILK, 0.15, 2));
 	ingredients.add(new Ingredient(INGREDIENT_WHIPPED_CREAM, 0.50, 1));
 	beverages.add(new Beverage(BEVERAGE_MOCHACCINO, ingredients));
-    }
-
-    private Beverage getBeverage(String beverageName) {
-	return beverages.stream().filter(b -> b.getName().equals(beverageName)).findFirst().get();
     }
 
     private void setupBeverages() {
